@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPaymentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPaymentLabel_paymentId}" for="paymentId" />
+                    <h:inputText id="paymentId" value="#{paymentController.selected.paymentId}" title="#{bundle.EditPaymentTitle_paymentId}" required="true" requiredMessage="#{bundle.EditPaymentRequiredMessage_paymentId}"/>
+                    <h:outputLabel value="#{bundle.EditPaymentLabel_paymentAmount}" for="paymentAmount" />
+                    <h:inputText id="paymentAmount" value="#{paymentController.selected.paymentAmount}" title="#{bundle.EditPaymentTitle_paymentAmount}" required="true" requiredMessage="#{bundle.EditPaymentRequiredMessage_paymentAmount}"/>
+                    <h:outputLabel value="#{bundle.EditPaymentLabel_paymentTime}" for="paymentTime" />
+                    <h:inputText id="paymentTime" value="#{paymentController.selected.paymentTime}" title="#{bundle.EditPaymentTitle_paymentTime}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPaymentLabel_customerId}" for="customerId" />
+                    <h:selectOneMenu id="customerId" value="#{paymentController.selected.customerId}" title="#{bundle.EditPaymentTitle_customerId}" required="true" requiredMessage="#{bundle.EditPaymentRequiredMessage_customerId}">
+                        <f:selectItems value="#{customerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPaymentLabel_staffId}" for="staffId" />
+                    <h:selectOneMenu id="staffId" value="#{paymentController.selected.staffId}" title="#{bundle.EditPaymentTitle_staffId}" required="true" requiredMessage="#{bundle.EditPaymentRequiredMessage_staffId}">
+                        <f:selectItems value="#{staffController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPaymentLabel_ticketId}" for="ticketId" />
+                    <h:selectOneMenu id="ticketId" value="#{paymentController.selected.ticketId}" title="#{bundle.EditPaymentTitle_ticketId}" required="true" requiredMessage="#{bundle.EditPaymentRequiredMessage_ticketId}">
+                        <f:selectItems value="#{ticketController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{paymentController.update}" value="#{bundle.EditPaymentSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPaymentViewLink}"/>
+                <br />
+                <h:commandLink action="#{paymentController.prepareList}" value="#{bundle.EditPaymentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPaymentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
