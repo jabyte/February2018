@@ -30,10 +30,10 @@ public class SignupServlet extends HttpServlet
 		String lastName = request.getParameter("last_name");
 		String phoneNumber = request.getParameter("phone_number");
 
-		String error = "No field can be empty.";
+		String error = "Only middle name is allowed to be empty.";
 
-		if (firstName.equals("") || middleName.equals("") || lastName.equals("") || phoneNumber.equals("")) {
-			request.setAttribute("empty_field", error);
+		if (firstName.equals("") || lastName.equals("") || phoneNumber.equals("")) {
+			request.setAttribute("error", error);
 			request.getRequestDispatcher("WEB-INF/views/customer/create.jsp").forward(request, response);
 		} else {
 			Customer customer = new Customer();
@@ -42,8 +42,9 @@ public class SignupServlet extends HttpServlet
 			customer.setLastName(lastName);
 			customer.setPhoneNumber(phoneNumber);
 
-			customerFacade = new CustomerFacade();
 			customerFacade.create(customer);
+
+			request.getRequestDispatcher("WEB-INF/views/responses/success.jsp").forward(request, response);
 		}
 	}
 }
