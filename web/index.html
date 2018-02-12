@@ -12,39 +12,60 @@
 	<body>
 		<div class="grid-container">
 			<div class="grid-x grid-padding-x">
+
 				<div class="large-12 cell">
-					<h1>TRANSNOVA</h1>
+					<div style="height: 100px;"></div>
+					<h3></h3>
+					<h4>Book a Trip</h4>
 					<!--<h5>SAFE, SECURED, FAST AND RELIABLE</h5>-->
 				</div>
 			</div>
 
 			<div class="grid-x grid-padding-x">
-				<div class="large-12 cell">
-					<div class="top-bar">
-						<ul class="menu">
-							<li><a href="/Transnova/administrator">Administrator</a></li>
-							<li><a href="/Transnova/coupon">Coupon</a></li>
-							<li><a href="/Transnova/customers">Customers</a></li>
-							<li><a href="/Transnova/notification">Notification</a></li>
-							<li><a href="/Transnova/payment">Payment</a></li>
-							<li><a href="/Transnova/redeemedCoupon">Redeemed Coupon</a></li>
-							<li><a href="/Transnova/staff">Staff</a></li>
-							<li><a href="/Transnova/station">Station</a></li>
-							<li><a href="/Transnova/ticket">Ticket</a></li>
-						</ul>
-					</div>
+				<div class="large-6 cell medium-pull-2" style="background-image: url(resources/img/banner.jpg); background-size: contain; opacity: 0.7;">
+					<!--<img src="resources/img/banner.jpg" />-->
+				</div>
 
-					<div class="">
-						<img src="resources/img/banner.jpg" />
-					</div>
+				<div class="large-3 cell medium-push-2">
+					<label for="source">From:</label>
+					<select id="departure">
+						<option value="">-Select Source-</option>
+						<option value="area1">Area 1</option>
+						<option value="area10">Area 10</option>
+						<option value="zone4">Zone 4</option>
+						<option value="maitama">Maitama</option>
+						<option value="Wuse">Wuse</option>
+					</select>
 
+					<label for="source">Date:</label>
+					<input type="date" id="departure_date" />
+					<br>
+					<input type="submit" id="search_btn" value="Book it!" class="button primary expanded" />
+				</div>
+
+				<div class="large-3 cell medium-push-2">
+					<label for="destination">To:</label>
+					<select id="departure">
+						<option value="">-Select Destination-</option>
+						<option value="area1">Area 1</option>
+						<option value="area10">Area 10</option>
+						<option value="zone4">Zone 4</option>
+						<option value="maitama">Maitama</option>
+						<option value="Wuse">Wuse</option>
+					</select>
+
+					<label for="destination">Time:</label>
+					<select id="departure_time">
+						<option value="800">08:00 AM</option>
+						<option value="1000">10:00 AM</option>
+						<option value="1200">12:00 AM</option>
+						<option value="1400">02:00 AM</option>
+						<option value="1600">04:00 AM</option>
+						<option value="1800">06:00 AM</option>
+					</select>
+					<br><br>
 				</div>
 			</div>
-
-			<div class="grid-x grid-padding-x">
-
-			</div>
-
 		</div>
 	</body>
 </html>

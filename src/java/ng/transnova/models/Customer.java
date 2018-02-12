@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -25,11 +26,16 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
 	, @NamedQuery(name = "Customer.findByCustomerId", query = "SELECT c FROM Customer c WHERE c.customerId = :customerId")
 	, @NamedQuery(name = "Customer.findByPhoneNumber", query = "SELECT c FROM Customer c WHERE c.phoneNumber = :phoneNumber")
+	, @NamedQuery(name = "Customer.findByPhoneNumberAndPassword", query = "SELECT c FROM Customer c WHERE c.phoneNumber = :phoneNumber AND c.password = :password")
 	, @NamedQuery(name = "Customer.findByFirstName", query = "SELECT c FROM Customer c WHERE c.firstName = :firstName")
 	, @NamedQuery(name = "Customer.findByLastName", query = "SELECT c FROM Customer c WHERE c.lastName = :lastName")
 	, @NamedQuery(name = "Customer.findByMiddleName", query = "SELECT c FROM Customer c WHERE c.middleName = :middleName")})
 public class Customer implements Serializable
 {
+	@Lob
+	@Size(max = 65535)
+	@Column(name = "password")
+	private String password;
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -205,5 +211,15 @@ public class Customer implements Serializable
 	public String stringValue()
 	{
 		return customerId + "," + phoneNumber + "," + firstName + "," + lastName + "," + middleName + "," + redeemedCouponCollection + "," + ticketCollection + "," + paymentCollection + "," + notificationCollection;
+	}
+
+	public String getPassword()
+	{
+		return password;
+	}
+
+	public void setPassword(String password)
+	{
+		this.password = password;
 	}
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ng.transnova.beans.CustomerFacade;
+import ng.transnova.models.Customer;
 
 @WebServlet(name = "LoginController", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet
@@ -26,7 +27,14 @@ public class LoginServlet extends HttpServlet
 	{
 		String username = (String) request.getAttribute("username");
 		String password = (String) request.getAttribute("password");
-		//customer = customerFacade.find(customer.getCustomerId());
-		//request.setAttribute("Customer", customerFacade.find(this.customer));
+		Customer customer = customerFacade.find(username, password);
+
+		if (customer != null) {
+//			request.getSession();
+			request.setAttribute("customer", customer);
+		} else {
+			request.setAttribute("error", "Username or password incorrect.");
+		}
+		request.getRequestDispatcher("WEB-INF/views/login/login.jsp").forward(request, response);
 	}
 }

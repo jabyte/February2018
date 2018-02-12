@@ -10,7 +10,7 @@
 <%@page import="ng.transnova.models.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../../jspf/header.jspf" %>
-
+<div style="height: 100px";></div>
 <h2>Customers</h2>
 <table>
 	<thead>
@@ -24,16 +24,18 @@
 </thead>
 <%
 	List<Customer> customers = (List<Customer>) request.getAttribute("customers");
-	for (Customer customer : customers) {
-		out.print("<tr>");
-		out.print("<td>" + customer.getCustomerId().toString() + "</td>");
-		out.print("<td>" + customer.getPhoneNumber() + "</td>");
-		out.print("<td>" + customer.getFirstName() + "</td>");
-		out.print("<td>" + customer.getMiddleName() + "</td>");
-		out.print("<td>" + customer.getLastName() + "</td>");
-		out.print("<td><a href=\"#\">Edit</a></td>");
-		out.print("<td><a href=\"#\">Delete</a></td>");
-		out.print("</tr>");
+	if (customers != null) {
+		for (Customer customer : customers) {
+			out.print("<tr>");
+			out.print("<td>" + customer.getCustomerId().toString() + "</td>");
+			out.print("<td>" + customer.getPhoneNumber() + "</td>");
+			out.print("<td>" + customer.getFirstName() + "</td>");
+			out.print("<td>" + customer.getMiddleName() + "</td>");
+			out.print("<td>" + customer.getLastName() + "</td>");
+			out.print("<td><a href=\"#\">Edit</a></td>");
+			out.print("<td><a href=\"#\">Delete</a></td>");
+			out.print("</tr>");
+		}
 	}
 %>
 </table>

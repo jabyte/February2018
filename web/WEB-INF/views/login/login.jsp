@@ -20,10 +20,11 @@
 	<div class="large-4 medium-4 cell medium-pull-2"></div>
 
 	<div class="large-4 medium-4 cell">
-		<h4>LOGIN</h4>
+		<div style="height: 100px;"></div>
+		<h4 class="title-bar-title">LOGIN</h4>
 		<hr>
 
-		<form method="post" action="/Transnova/signup">
+		<form method="post" action="/Transnova/login">
 			<label for="username">Username:</label>
 			<input placeholder="Username or Phone Number" type="text" name="username">
 
@@ -34,7 +35,7 @@
 
 			<div class="grid-x row">
 				<div class="large-6 medium-6 cell medium-pull-2">
-					<a href="#" class="">Sign up here</a>
+					<a href="/Transnova/signup" class="">Sign up here</a>
 				</div>
 				<div class="large-6 medium-6 cell medium-pull-2" style="text-align: right">
 					<a href="#" class="">Forgot password?</a>

@@ -23,7 +23,7 @@ public class CustomerServlet extends HttpServlet
 	{
 		List<Customer> customers = customerFacade.findAll();
 		request.setAttribute("customers", customers);
-		request.getRequestDispatcher("WEB-INF/views/customer/customers.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/customer/dashboard.jsp").forward(request, response);
 	}
 
 	@Override

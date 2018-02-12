@@ -7,6 +7,10 @@
 </div>
 <script src="resources/js/jquery.js"></script>
 <script src="resources/js/foundation.js"></script>
+<script src="resources/js/foundation.core.js"></script>
+<script src="resources/js/foundation.tabs.js"></script>
+<script src="resources/js/foundation.util.keboard.js"></script>
+<script src="resources/js/foundation.util.imageLoader.js"></script>
 <script src="resources/js/what-input.js"></script>
 <script>$(document).foundation();</script>
 </body>

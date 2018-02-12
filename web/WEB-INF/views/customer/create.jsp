@@ -1,7 +1,7 @@
 <%@include file="../../jspf/header.jspf" %>
 
 <div class="row">
-	<h1 class="title-bar-title">TRANSNOVA</h1>
+	<h1 class="title-bar-title"></h1>
 </div>
 
 <div class="grid-x grid-padding-x">
@@ -9,7 +9,9 @@
 	<div class="large-4 medium-4 cell medium-pull-2"></div>
 
 	<div class="large-4 medium-4 cell">
-		<h4>SIGN UP</h4>
+		<div style="height: 70px;"></div>
+		<h4 class="title-bar-title middle">SIGN UP</h4>
+		<hr>
 		<%
 			if (request.getAttribute("error") != null) {
 				out.print("<div style=\"text-align: center; color: red;\">");
@@ -32,7 +34,7 @@
 			<input placeholder="Phone Number" type="text" name="phone_number">
 
 			<input class="button expanded" value="Sign up" type="submit">
-			<a href="#" class="expanded">Already have an account? Login.</a>
+			<a href="login" class="expanded">Already have an account? Login.</a>
 
 		</form>
 	</div>

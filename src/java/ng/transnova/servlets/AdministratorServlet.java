@@ -19,7 +19,7 @@ public class AdministratorServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		request.setAttribute("Administrators", administratorFacade.findAll());
-		request.getRequestDispatcher("WEB-INF/views/administrators.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/administrator/dashboard.jsp").forward(request, response);
 	}
 
 	@Override
