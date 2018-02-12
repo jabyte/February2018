@@ -25,16 +25,19 @@ public class LoginServlet extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String username = (String) request.getAttribute("username");
+		String phoneNumber = (String) request.getAttribute("phoneNumber");
 		String password = (String) request.getAttribute("password");
-		Customer customer = customerFacade.find(username, password);
 
-		if (customer != null) {
-//			request.getSession();
+		Customer customer = customerFacade.find(phoneNumber);
+
+		if (customer != null && customer.getPassword().equals(password)) {
+			request.getSession().setAttribute("customer", customer);
 			request.setAttribute("customer", customer);
+			request.getSession().setMaxInactiveInterval(600);
+			request.getRequestDispatcher("WEB-INF/views/customer/dashboard.jsp").forward(request, response);
 		} else {
 			request.setAttribute("error", "Username or password incorrect.");
+			request.getRequestDispatcher("WEB-INF/views/login/login.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("WEB-INF/views/login/login.jsp").forward(request, response);
 	}
 }

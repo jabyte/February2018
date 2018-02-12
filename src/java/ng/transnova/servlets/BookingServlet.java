@@ -20,7 +20,7 @@ import ng.transnova.models.Ticket;
  *
  * @author jabyte
  */
-@WebServlet(name = "BookingServlet", urlPatterns = {"/bookit"})
+@WebServlet(name = "BookingServlet", urlPatterns = {"/booking"})
 public class BookingServlet extends HttpServlet
 {
 
@@ -55,7 +55,10 @@ public class BookingServlet extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-
+		String souces = (String) request.getAttribute("");
+		String destination = (String) request.getAttribute("");
+		String departureDate = (String) request.getAttribute("");
+		String dpartureTime = (String) request.getAttribute("");
 	}
 
 	/**

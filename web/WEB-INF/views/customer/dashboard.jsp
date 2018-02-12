@@ -19,33 +19,20 @@
 <div class="tabs-content" data-tabs-content="dashboard-tabs">
 	<div class="tabs-panel is-active" id="profile">
 		<h5>Profile</h5>
-		<table>
-			<thead>
-			<th>Customer ID</th>
-			<th>Phone Number</th>
-			<th>First Name</th>
-			<th>Middle Name</th>
-			<th>Last Name</th>
-			<th>Edit</th>
-			<th>Delete</th>
-			</thead>
-			<%
-				List<Customer> customers = (List<Customer>) request.getAttribute("customers");
-				if (customers != null) {
-					for (Customer customer : customers) {
-						out.print("<tr>");
-						out.print("<td>" + customer.getCustomerId().toString() + "</td>");
-						out.print("<td>" + customer.getPhoneNumber() + "</td>");
-						out.print("<td>" + customer.getFirstName() + "</td>");
-						out.print("<td>" + customer.getMiddleName() + "</td>");
-						out.print("<td>" + customer.getLastName() + "</td>");
-						out.print("<td><a href=\"#\">Edit</a></td>");
-						out.print("<td><a href=\"#\">Delete</a></td>");
-						out.print("</tr>");
-					}
-				}
-			%>
-		</table>
+		<%
+			String password = (String) request.getParameter("password");
+			Customer customer = (Customer) request.getAttribute("customer");
+			if (customer != null && customer.getPassword().equals(password)) {
+				out.print("<ul>");
+				out.print("<li>Customer ID: " + customer.getCustomerId().toString() + "</li>");
+				out.print("<li>Phone Number: " + customer.getPhoneNumber() + "</li>");
+				out.print("<li>First Name: " + customer.getFirstName() + "</li>");
+				out.print("<li>Middle Name: " + customer.getMiddleName() + "</li>");
+				out.print("<li>Last Name: " + customer.getLastName() + "</li>");
+				out.print("</tr>");
+				out.print("</ul>");
+			}
+		%>
 	</div>
 
 	<div class="tabs-panel" id="past_trips">
@@ -59,9 +46,9 @@
 			<th>Destination</th>
 			<th>One Way Ticket</th>
 			</thead>
-			<%
-				List<Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
-				if (tickets != null) {
+			<%List< Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
+				if (tickets
+						!= null) {
 					for (Ticket ticket : tickets) {
 						out.print("<tr>");
 						out.print("<td>" + ticket.getTicketNumber() + "</td>");
@@ -89,7 +76,8 @@
 			<th>One Way Ticket</th>
 			</thead>
 			<%
-				if (tickets != null) {
+				if (tickets
+						!= null) {
 					for (Ticket ticket : tickets) {
 						out.print("<tr>");
 						out.print("<td>" + ticket.getTicketNumber() + "</td>");
@@ -116,13 +104,16 @@
 			</thead>
 			<%
 				List<Payment> payments = (List<Payment>) request.getAttribute("payments");
-				for (Payment payment : payments) {
-					out.print("<tr>");
-					out.print("<td>" + payment.getPaymentId() + "</td>");
-					out.print("<td>" + payment.getPaymentAmount() + "</td>");
-					out.print("<td>" + payment.getPaymentTime() + "</td>");
-					out.print("<td>" + payment.getTicketId() + "</td>");
-					out.print("</tr>");
+				if (payments
+						!= null) {
+					for (Payment payment : payments) {
+						out.print("<tr>");
+						out.print("<td>" + payment.getPaymentId() + "</td>");
+						out.print("<td>" + payment.getPaymentAmount() + "</td>");
+						out.print("<td>" + payment.getPaymentTime() + "</td>");
+						out.print("<td>" + payment.getTicketId() + "</td>");
+						out.print("</tr>");
+					}
 				}
 			%>
 		</table>

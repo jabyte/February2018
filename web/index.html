@@ -12,58 +12,56 @@
 	<body>
 		<div class="grid-container">
 			<div class="grid-x grid-padding-x">
-
 				<div class="large-12 cell">
 					<div style="height: 100px;"></div>
 					<h3></h3>
-					<h4>Book a Trip</h4>
-					<!--<h5>SAFE, SECURED, FAST AND RELIABLE</h5>-->
+
 				</div>
 			</div>
 
 			<div class="grid-x grid-padding-x">
-				<div class="large-6 cell medium-pull-2" style="background-image: url(resources/img/banner.jpg); background-size: contain; opacity: 0.7;">
-					<!--<img src="resources/img/banner.jpg" />-->
+				<div class="medium-6 cell" style="background-image: url(resources/img/banner.jpg); background-size: contain; opacity: 0.7;">
+					<img src="resources/img/banner.jpg" />
 				</div>
 
-				<div class="large-3 cell medium-push-2">
-					<label for="source">From:</label>
-					<select id="departure">
-						<option value="">-Select Source-</option>
-						<option value="area1">Area 1</option>
-						<option value="area10">Area 10</option>
-						<option value="zone4">Zone 4</option>
-						<option value="maitama">Maitama</option>
-						<option value="Wuse">Wuse</option>
-					</select>
+				<div class="medium-6 cell">
+					<h4 class="title-bar-title">BOOK A TRIP</h4>
+					<h6 class="title-bar-title">Safe, Secured, Fast & Reliable.</h6>
+					<form>
+						<label for="source">From:</label>
+						<select id="source" name="source">
+							<option value="">-Select Source-</option>
+							<option value="area1">Area 1</option>
+							<option value="area10">Area 10</option>
+							<option value="zone4">Zone 4</option>
+							<option value="maitama">Maitama</option>
+							<option value="Wuse">Wuse</option>
+						</select>
 
-					<label for="source">Date:</label>
-					<input type="date" id="departure_date" />
-					<br>
-					<input type="submit" id="search_btn" value="Book it!" class="button primary expanded" />
-				</div>
+						<label for="destination">To:</label>
+						<select id="departure" name="destination">
+							<option value="">-Select Destination-</option>
+							<option value="area1">Area 1</option>
+							<option value="area10">Area 10</option>
+							<option value="zone4">Zone 4</option>
+							<option value="maitama">Maitama</option>
+							<option value="Wuse">Wuse</option>
+						</select>
 
-				<div class="large-3 cell medium-push-2">
-					<label for="destination">To:</label>
-					<select id="departure">
-						<option value="">-Select Destination-</option>
-						<option value="area1">Area 1</option>
-						<option value="area10">Area 10</option>
-						<option value="zone4">Zone 4</option>
-						<option value="maitama">Maitama</option>
-						<option value="Wuse">Wuse</option>
-					</select>
+						<label for="departure_date">Date:</label>
+						<input type="date" id="departure_date" name="departure_date" />
 
-					<label for="destination">Time:</label>
-					<select id="departure_time">
-						<option value="800">08:00 AM</option>
-						<option value="1000">10:00 AM</option>
-						<option value="1200">12:00 AM</option>
-						<option value="1400">02:00 AM</option>
-						<option value="1600">04:00 AM</option>
-						<option value="1800">06:00 AM</option>
-					</select>
-					<br><br>
+						<label for="departure_time">Time:</label>
+						<select id="departure_time" name="departure_time">
+							<option value="800">08:00 AM</option>
+							<option value="1000">10:00 AM</option>
+							<option value="1200">12:00 AM</option>
+							<option value="1400">02:00 AM</option>
+							<option value="1600">04:00 AM</option>
+							<option value="1800">06:00 AM</option>
+						</select>
+						<input type="submit" id="book-btn" value="Book it!" class="button expanded" />
+					</form>
 				</div>
 			</div>
 		</div>

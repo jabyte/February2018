@@ -64,9 +64,9 @@ public class CustomerFacade extends AbstractFacade<Customer>
 	{
 		super.create(entity); //To change body of generated methods, choose Tools | Templates.
 	}
-
-	public Customer find(String username, String password)
-	{
-		return (Customer) em.createNativeQuery("Customer.findByPhoneNumberAndPassword", Customer.class).getResultList();
-	}
+//
+//	public Customer find(String phoneNumber)
+//	{
+//		return (Customer) em.createNativeQuery("Customer.findByPhoneNumber", Customer.class).getResultList();
+//	}
 }
