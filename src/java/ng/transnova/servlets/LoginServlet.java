@@ -25,10 +25,10 @@ public class LoginServlet extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String phoneNumber = (String) request.getAttribute("phoneNumber");
-		String password = (String) request.getAttribute("password");
+		String phoneNumber = (String) request.getParameter("username");
+		String password = (String) request.getParameter("password");
 
-		Customer customer = customerFacade.find(phoneNumber);
+		Customer customer = customerFacade.findByLoginDetails(phoneNumber, password);
 
 		if (customer != null && customer.getPassword().equals(password)) {
 			request.getSession().setAttribute("customer", customer);

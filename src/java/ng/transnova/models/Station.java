@@ -30,20 +30,20 @@ public class Station implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "station_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "station_id")
 	private Integer stationId;
 	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "station_name")
+	@NotNull
+	@Size(min = 1, max = 100)
+	@Column(name = "station_name")
 	private String stationName;
 	@Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "station_address")
+	@NotNull
+	@Lob
+	@Size(min = 1, max = 65535)
+	@Column(name = "station_address")
 	private String stationAddress;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "destination")
 	private Collection<Ticket> ticketCollection;
@@ -145,5 +145,5 @@ public class Station implements Serializable
 	{
 		return "ng.transnova.models.Station[ stationId=" + stationId + " ]";
 	}
-	
+
 }

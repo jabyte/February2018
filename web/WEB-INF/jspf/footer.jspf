@@ -1,17 +1,7 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-
-
 </div>
 </div>
 </div>
-<script src="resources/js/jquery.js"></script>
-<script src="resources/js/foundation.js"></script>
-<script src="resources/js/foundation.core.js"></script>
-<script src="resources/js/foundation.tabs.js"></script>
-<script src="resources/js/foundation.util.keboard.js"></script>
-<script src="resources/js/foundation.util.imageLoader.js"></script>
-<script src="resources/js/what-input.js"></script>
-<script>$(document).foundation();</script>
 </body>
 </html>

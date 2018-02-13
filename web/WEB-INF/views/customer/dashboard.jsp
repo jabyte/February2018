@@ -8,6 +8,9 @@
 <%@page import="java.util.List"%>
 <%@page import="ng.transnova.models.Ticket"%>
 <%@include file="../../jspf/header.jspf" %>
+<div class="" style="padding: 20px 0 20px 0;">
+	<h4 class="title-bar-title">TRANSNOVA</h4>
+</div>
 
 <ul class="tabs" data-tabs id="dashboard-tabs">
 	<li class="tabs-title is-active"><a href="#profile" aria-selected="true">Profile</a></li>

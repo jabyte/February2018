@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import ng.transnova.models.Customer;
 
 @Stateless
@@ -64,9 +65,13 @@ public class CustomerFacade extends AbstractFacade<Customer>
 	{
 		super.create(entity); //To change body of generated methods, choose Tools | Templates.
 	}
-//
-//	public Customer find(String phoneNumber)
-//	{
-//		return (Customer) em.createNativeQuery("Customer.findByPhoneNumber", Customer.class).getResultList();
-//	}
+
+	public Customer findByLoginDetails(String phoneNumber, String password)
+	{
+		Query query = em.createNamedQuery("Customer.findByLoginDetails", Customer.class);
+		query.setParameter("phoneNumber", phoneNumber);
+		query.setParameter("password", password);
+		System.out.println("Got it!");
+		return (Customer) query.getSingleResult();
+	}
 }

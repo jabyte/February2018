@@ -32,48 +32,53 @@ import javax.xml.bind.annotation.XmlTransient;
 	, @NamedQuery(name = "Ticket.findByTicketNumber", query = "SELECT t FROM Ticket t WHERE t.ticketNumber = :ticketNumber")
 	, @NamedQuery(name = "Ticket.findByDateBooked", query = "SELECT t FROM Ticket t WHERE t.dateBooked = :dateBooked")
 	, @NamedQuery(name = "Ticket.findByOnewayTicket", query = "SELECT t FROM Ticket t WHERE t.onewayTicket = :onewayTicket")
-	, @NamedQuery(name = "Ticket.findByDeparcherTime", query = "SELECT t FROM Ticket t WHERE t.deparcherTime = :deparcherTime")})
+	, @NamedQuery(name = "Ticket.findByDeparcherTime", query = "SELECT t FROM Ticket t WHERE t.departureTime = :departureTime")})
 public class Ticket implements Serializable
 {
+	@Basic(optional = false)
+	@NotNull
+	@Size(min = 1, max = 50)
+	@Column(name = "deparcher_time")
+	private String deparcherTime;
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ticket_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ticket_id")
 	private Integer ticketId;
 	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "ticket_number")
+	@NotNull
+	@Size(min = 1, max = 20)
+	@Column(name = "ticket_number")
 	private String ticketNumber;
 	@Basic(optional = false)
-    @NotNull
-    @Column(name = "date_booked")
-    @Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	@Column(name = "date_booked")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateBooked;
 	@Basic(optional = false)
-    @NotNull
-    @Column(name = "oneway_ticket")
+	@NotNull
+	@Column(name = "oneway_ticket")
 	private boolean onewayTicket;
 	@Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "deparcher_time")
-	private String deparcherTime;
+	@NotNull
+	@Size(min = 1, max = 50)
+	@Column(name = "departure_time")
+	private String departureTime;
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-    @ManyToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Customer customerId;
 	@JoinColumn(name = "destination", referencedColumnName = "station_id")
-    @ManyToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Station destination;
 	@JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
-    @ManyToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Payment paymentId;
 	@JoinColumn(name = "source", referencedColumnName = "station_id")
-    @ManyToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Station source;
 	@JoinColumn(name = "staff_id", referencedColumnName = "staff_id")
-    @ManyToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Staff staffId;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ticketId")
 	private Collection<Payment> paymentCollection;
@@ -87,13 +92,13 @@ public class Ticket implements Serializable
 		this.ticketId = ticketId;
 	}
 
-	public Ticket(Integer ticketId, String ticketNumber, Date dateBooked, boolean onewayTicket, String deparcherTime)
+	public Ticket(Integer ticketId, String ticketNumber, Date dateBooked, boolean onewayTicket, String departureTime)
 	{
 		this.ticketId = ticketId;
 		this.ticketNumber = ticketNumber;
 		this.dateBooked = dateBooked;
 		this.onewayTicket = onewayTicket;
-		this.deparcherTime = deparcherTime;
+		this.departureTime = departureTime;
 	}
 
 	public Integer getTicketId()
@@ -136,14 +141,14 @@ public class Ticket implements Serializable
 		this.onewayTicket = onewayTicket;
 	}
 
-	public String getDeparcherTime()
+	public String getDepartureTime()
 	{
-		return deparcherTime;
+		return departureTime;
 	}
 
-	public void setDeparcherTime(String deparcherTime)
+	public void setDepartureTime(String departureTime)
 	{
-		this.deparcherTime = deparcherTime;
+		this.departureTime = departureTime;
 	}
 
 	public Customer getCustomerId()
@@ -234,5 +239,15 @@ public class Ticket implements Serializable
 	{
 		return "ng.transnova.models.Ticket[ ticketId=" + ticketId + " ]";
 	}
-	
+
+	public String getDeparcherTime()
+	{
+		return deparcherTime;
+	}
+
+	public void setDeparcherTime(String deparcherTime)
+	{
+		this.deparcherTime = deparcherTime;
+	}
+
 }

@@ -33,6 +33,12 @@
 			<label for="phone_number">Phone Number:</label>
 			<input placeholder="Phone Number" type="text" name="phone_number">
 
+			<label for="password">Password:</label>
+			<input placeholder="Password" type="password" name="password">
+
+			<label for="re-password">Confirm Password:</label>
+			<input placeholder="Password" type="password" name="re-password">
+
 			<input class="button expanded" value="Sign up" type="submit">
 			<a href="login" class="expanded">Already have an account? Login.</a>
 

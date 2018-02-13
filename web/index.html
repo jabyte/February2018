@@ -11,40 +11,35 @@
 	</head>
 	<body>
 		<div class="grid-container">
-			<div class="grid-x grid-padding-x">
-				<div class="large-12 cell">
-					<div style="height: 100px;"></div>
-					<h3></h3>
-
-				</div>
+			<div class="" style="padding: 20px 0 20px 0;">
+				<h4 class="title-bar-title">TRANSNOVA</h4>
 			</div>
 
-			<div class="grid-x grid-padding-x">
-				<div class="medium-6 cell" style="background-image: url(resources/img/banner.jpg); background-size: contain; opacity: 0.7;">
-					<img src="resources/img/banner.jpg" />
-				</div>
+			<div class="grid-x grid-padding-x callout" style="background-image: url(resources/img/banner.jpg); background-size: cover; min-height: 500px; padding:  20px;">
+				<div class="medium-8 cell"></div>
 
-				<div class="medium-6 cell">
-					<h4 class="title-bar-title">BOOK A TRIP</h4>
-					<h6 class="title-bar-title">Safe, Secured, Fast & Reliable.</h6>
-					<form>
+				<div class="medium-4 cell callout" style="background: whitesmoke; padding: 20px;">
+					<h4 style="text-align: center;">BOOK A TRIP</h4>
+					<h6 style="text-align: center;">Safe, Secured, Fast & Reliable.</h6>
+					<br>
+					<form method="post" action="/Transnova/booking">
 						<label for="source">From:</label>
 						<select id="source" name="source">
 							<option value="">-Select Source-</option>
-							<option value="area1">Area 1</option>
-							<option value="area10">Area 10</option>
-							<option value="zone4">Zone 4</option>
-							<option value="maitama">Maitama</option>
+							<option value="Area 1">Area 1</option>
+							<option value="Area 2">Area 2</option>
+							<option value="Zone 4">Zone 4</option>
+							<option value="Maitama">Maitama</option>
 							<option value="Wuse">Wuse</option>
 						</select>
 
 						<label for="destination">To:</label>
 						<select id="departure" name="destination">
-							<option value="">-Select Destination-</option>
-							<option value="area1">Area 1</option>
-							<option value="area10">Area 10</option>
-							<option value="zone4">Zone 4</option>
-							<option value="maitama">Maitama</option>
+							<option value="">-Select Source-</option>
+							<option value="Area 1">Area 1</option>
+							<option value="Area 2">Area 2</option>
+							<option value="Zone 4">Zone 4</option>
+							<option value="Maitama">Maitama</option>
 							<option value="Wuse">Wuse</option>
 						</select>
 
@@ -59,7 +54,7 @@
 							<option value="1400">02:00 AM</option>
 							<option value="1600">04:00 AM</option>
 							<option value="1800">06:00 AM</option>
-						</select>
+						</select><br><br>
 						<input type="submit" id="book-btn" value="Book it!" class="button expanded" />
 					</form>
 				</div>

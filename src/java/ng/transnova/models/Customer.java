@@ -1,6 +1,9 @@
 package ng.transnova.models;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -26,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
 	, @NamedQuery(name = "Customer.findByCustomerId", query = "SELECT c FROM Customer c WHERE c.customerId = :customerId")
 	, @NamedQuery(name = "Customer.findByPhoneNumber", query = "SELECT c FROM Customer c WHERE c.phoneNumber = :phoneNumber")
-	, @NamedQuery(name = "Customer.findByPhoneNumberAndPassword", query = "SELECT c FROM Customer c WHERE c.phoneNumber = :phoneNumber AND c.password = :password")
+	, @NamedQuery(name = "Customer.findByLoginDetails", query = "SELECT c FROM Customer c WHERE c.phoneNumber = :phoneNumber AND c.password = :password")
 	, @NamedQuery(name = "Customer.findByFirstName", query = "SELECT c FROM Customer c WHERE c.firstName = :firstName")
 	, @NamedQuery(name = "Customer.findByLastName", query = "SELECT c FROM Customer c WHERE c.lastName = :lastName")
 	, @NamedQuery(name = "Customer.findByMiddleName", query = "SELECT c FROM Customer c WHERE c.middleName = :middleName")})
@@ -220,6 +223,25 @@ public class Customer implements Serializable
 
 	public void setPassword(String password)
 	{
-		this.password = password;
+		this.password = getSHA512SecurePassword(password);
+	}
+
+	private String getSHA512SecurePassword(String passwordToHash)
+	{
+		String salt = "jabyte@silicsystem.com";
+		String generatedPassword = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-512");
+			md.update(salt.getBytes(StandardCharsets.UTF_8));
+			byte[] bytes = md.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			generatedPassword = sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return generatedPassword;
 	}
 }
