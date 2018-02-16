@@ -223,10 +223,10 @@ public class Customer implements Serializable
 
 	public void setPassword(String password)
 	{
-		this.password = getSHA512SecurePassword(password);
+		this.password = password;
 	}
 
-	private String getSHA512SecurePassword(String passwordToHash)
+	public static String getSHA512SecurePassword(String passwordToHash)
 	{
 		String salt = "jabyte@silicsystem.com";
 		String generatedPassword = null;

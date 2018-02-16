@@ -8,9 +8,8 @@
 <%@page import="java.util.List"%>
 <%@page import="ng.transnova.models.Ticket"%>
 <%@include file="../../jspf/header.jspf" %>
-<div class="" style="padding: 20px 0 20px 0;">
-	<h4 class="title-bar-title">TRANSNOVA</h4>
-</div>
+
+
 
 <ul class="tabs" data-tabs id="dashboard-tabs">
 	<li class="tabs-title is-active"><a href="#profile" aria-selected="true">Profile</a></li>
@@ -18,7 +17,6 @@
 	<li class="tabs-title"><a data-tabs-target="tickets" href="#tickets">Tickets Booked</a></li>
 	<li class="tabs-title"><a data-tabs-target="payments" href="#payments">Payments</a></li>
 </ul>
-
 <div class="tabs-content" data-tabs-content="dashboard-tabs">
 	<div class="tabs-panel is-active" id="profile">
 		<h5>Profile</h5>
@@ -50,16 +48,18 @@
 			<th>One Way Ticket</th>
 			</thead>
 			<%List< Ticket> tickets = (List<Ticket>) request.getAttribute("tickets");
-				if (tickets
-						!= null) {
+				if (tickets != null) {
 					for (Ticket ticket : tickets) {
+						String id = ticket.getTicketNumber();
 						out.print("<tr>");
-						out.print("<td>" + ticket.getTicketNumber() + "</td>");
+						out.print("<td>" + id + "</td>");
 						out.print("<td>" + ticket.getDeparcherTime() + "</td>");
 						out.print("<td>" + ticket.getDateBooked() + "</td>");
 						out.print("<td>" + ticket.getSource().getStationName() + "</td>");
 						out.print("<td>" + ticket.getDestination().getStationName() + "</td>");
 						out.print("<td>" + ticket.getOnewayTicket() + "</td>");
+						out.print("<td><a id=\"" + id + "\" href=\"/Transnova/customer/pastrip/edit/" + id + "\"></a></td>");
+						out.print("");
 						out.print("</tr>");
 					}
 				}
@@ -67,7 +67,7 @@
 		</table>
 	</div>
 
-	<div class="tabs-panel is-active" id="tickets">
+	<div class="tabs-panel" id="tickets">
 		<h5>Tickets</h5>
 		<table>
 			<thead>
@@ -96,7 +96,7 @@
 		</table>
 	</div>
 
-	<div class="tabs-panel is-active" id="payments">
+	<div class="tabs-panel" id="payments">
 		<h5>Payments</h5>
 		<table>
 			<thead>
@@ -122,5 +122,4 @@
 		</table>
 	</div>
 </div>
-
 <%@include file="../../jspf/footer.jspf" %>

@@ -9,15 +9,15 @@
 	<div class="large-4 medium-4 cell medium-pull-2"></div>
 
 	<div class="large-4 medium-4 cell">
-		<div style="height: 70px;"></div>
 		<h4 class="title-bar-title middle">SIGN UP</h4>
 		<hr>
 		<%
 			if (request.getAttribute("error") != null) {
 				out.print("<div style=\"text-align: center; color: red;\">");
 				out.print((String) request.getAttribute("error"));
-				out.print("<hr>");
 				out.print("</div>");
+				out.print("<br>");
+				out.print("<br>");
 			}
 		%>
 		<form method="post" action="/Transnova/signup">
@@ -37,7 +37,7 @@
 			<input placeholder="Password" type="password" name="password">
 
 			<label for="re-password">Confirm Password:</label>
-			<input placeholder="Password" type="password" name="re-password">
+			<input placeholder="Password" type="password" name="repassword">
 
 			<input class="button expanded" value="Sign up" type="submit">
 			<a href="login" class="expanded">Already have an account? Login.</a>

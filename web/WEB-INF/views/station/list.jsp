@@ -1,62 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListStationTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-			<h:form styleClass="jsfcrud_list_form">
-				<h:panelGroup id="messagePanel" layout="block">
-					<h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-				</h:panelGroup>
-				<h:outputText escape="false" value="#{bundle.ListStationEmpty}" rendered="#{stationController.items.rowCount == 0}"/>
-				<h:panelGroup rendered="#{stationController.items.rowCount > 0}">
-					<h:outputText value="#{stationController.pagination.pageFirstItem + 1}..#{stationController.pagination.pageLastItem + 1}/#{stationController.pagination.itemsCount}"/>&nbsp;
-					<h:commandLink action="#{stationController.previous}" value="#{bundle.Previous} #{stationController.pagination.pageSize}" rendered="#{stationController.pagination.hasPreviousPage}"/>&nbsp;
-					<h:commandLink action="#{stationController.next}" value="#{bundle.Next} #{stationController.pagination.pageSize}" rendered="#{stationController.pagination.hasNextPage}"/>&nbsp;
-					<h:dataTable value="#{stationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{bundle.ListStationTitle_stationId}"/>
-							</f:facet>
-							<h:outputText value="#{item.stationId}"/>
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{bundle.ListStationTitle_stationName}"/>
-							</f:facet>
-							<h:outputText value="#{item.stationName}"/>
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="#{bundle.ListStationTitle_stationAddress}"/>
-							</f:facet>
-							<h:outputText value="#{item.stationAddress}"/>
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="&nbsp;"/>
-							</f:facet>
-							<h:commandLink action="#{stationController.prepareView}" value="#{bundle.ListStationViewLink}"/>
-							<h:outputText value=" "/>
-							<h:commandLink action="#{stationController.prepareEdit}" value="#{bundle.ListStationEditLink}"/>
-							<h:outputText value=" "/>
-							<h:commandLink action="#{stationController.destroy}" value="#{bundle.ListStationDestroyLink}"/>
-						</h:column>
-					</h:dataTable>
-				</h:panelGroup>
-				<br />
-				<h:commandLink action="#{stationController.prepareCreate}" value="#{bundle.ListStationCreateLink}"/>
-				<br />
-				<br />
-				<h:link outcome="/index" value="#{bundle.ListStationIndexLink}"/>
-			</h:form>
-        </ui:define>
-    </ui:composition>
-
-</html>
+<%@page import="java.util.List"%>
+<%@page import="ng.transnova.models.Station"%>
+<%@include file="../../jspf/header.jspf" %>
+<h4>STATIONS</h4>
+<table>
+	<thead>
+	<th>Station ID</th>
+	<th>Station Name</th>
+	<th>Station Address</th>
+	<th>Action</th>
+</thead>
+<%
+	List<Station> stations = (List<Station>) request.getAttribute("stations");
+	if (stations != null) {
+		for (Station station : stations) {
+			out.print("<tr>");
+			out.print("<td>" + station.getStationId().toString() + "</td>");
+			out.print("<td>" + station.getStationName() + "</td>");
+			out.print("<td>" + station.getStationAddress() + "</td>");
+			out.print("<td><a id =" + station.getStationId().toString() + "\" href=\"/Transnova/station/view?id=" + station.getStationId().toString() + "\">View</a></td>");
+			out.print("</tr>");
+		}
+	}
+%>
+</table>
+<div>
+	<a href="#" class="button">Add new station</a>
+</div>
+<%@include file="../../jspf/footer.jspf" %>

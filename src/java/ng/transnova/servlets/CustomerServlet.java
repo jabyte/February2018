@@ -3,7 +3,6 @@ package ng.transnova.servlets;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,16 +34,13 @@ public class CustomerServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String phoneNumber = "08032175464";
-		String password = "admin";
-
 		Customer customer = em.createNamedQuery("Customer.findByPhoneNumber", Customer.class).getSingleResult();//customerFacade.find(phoneNumber);
 		List<Payment> payments = paymentFacade.findAll();
 		List<Ticket> tickets = ticketFacade.findAll();
-		request.setAttribute("customer", customer);
-		request.setAttribute("payments", payments);
-		request.setAttribute("tickets", tickets);
-		request.setAttribute("password", password);
+//		request.setAttribute("customer", customer);
+//		request.setAttribute("payments", payments);
+//		request.setAttribute("tickets", tickets);
+//		request.setAttribute("password", password);
 		request.getRequestDispatcher("WEB-INF/views/customer/dashboard.jsp").forward(request, response);
 	}
 

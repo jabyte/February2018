@@ -8,17 +8,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="resources/css/foundation.css"/>
-
-		<script src="resources/js/jquery.js"></script>
-		<script src="resources/js/foundation.js"></script>
-		<script src="resources/js/foundation.core.js"></script>
-		<script src="resources/js/foundation.tabs.js"></script>
-		<script src="resources/js/foundation.util.keboard.js"></script>
-		<script src="resources/js/foundation.util.imageLoader.js"></script>
-		<script src="resources/js/what-input.js"></script>
-		<script>$(document).foundation();</script>
 	</head>
 	<body>
 		<div class="grid-container">
+			<div class="" style="padding: 30px 0 20px 0;">
+				<h4 class="title-bar-title">TRANSNOVA</h4>
+			</div>
 			<div class="grid-x grid-padding-x">
 				<div class="large-12 cell">

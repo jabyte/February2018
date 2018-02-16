@@ -1,7 +1,6 @@
 package ng.transnova.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +37,7 @@ public class SignupServlet extends HttpServlet
 
 			if (firstName.equals("") || lastName.equals("") || phoneNumber.equals("") || password.equals("") || repassword.equals("")) {
 				request.setAttribute("error", error);
+				request.getRequestDispatcher("WEB-INF/views/customer/create.jsp").forward(request, response);
 			} else {
 				if (!password.equals(repassword)) {
 					request.setAttribute("error", "The two password did not march!");
@@ -48,7 +48,7 @@ public class SignupServlet extends HttpServlet
 					customer.setMiddleName(middleName);
 					customer.setLastName(lastName);
 					customer.setPhoneNumber(phoneNumber);
-					customer.setPassword(password);
+					customer.setPassword(Customer.getSHA512SecurePassword(password));
 
 					customerFacade.create(customer);
 
